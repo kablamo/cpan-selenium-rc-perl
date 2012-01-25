@@ -74,6 +74,13 @@ error_callback will be called. This allows you to perform various tasks to
 obtain additional details that occured when obtianing the error. If this is
 set to undef then the callback will not be issued.
 
+=head2 download_ok($locator)
+
+Parses the href attribute from a link on the current page.  Downloads that url
+via javascript's XMLHttpRequest.  Checks that response status is 200.
+
+=cut
+
 =back
 
 =cut
@@ -238,6 +245,34 @@ sub debug {
     $repl->selenium($self);
     $repl->lexical_environment->do($repl->selenium_lex_env);
     $repl->run;
+}
+
+sub download_ok {
+    my $self    = shift or die;
+    my $locator = shift or die;
+    my $url     = $self->get_attribute($locator . '@href');
+    my $speed   = $self->get_speed;
+    $self->run_script(
+        qq{
+            function _test_www_selenium_download_ok() {
+                var xmlhttp=new XMLHttpRequest();
+                xmlhttp.open("GET","$url",false);
+                xmlhttp.send("");
+                return xmlhttp.status;
+            }
+        },
+        $speed,
+        qq{downloading $url, $speed}
+    );
+    my $status = $self->get_eval(
+        'selenium.browserbot.getCurrentWindow().' .
+        '_test_www_selenium_download_ok()',
+        $speed,
+        qq{downloading $url, $speed}
+    );
+
+    $Test->is_eq($status, 200, 'Download status: ' . $status);
+    return $self;
 }
 
 1;
