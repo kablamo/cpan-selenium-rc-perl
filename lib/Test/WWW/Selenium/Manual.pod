@@ -1,0 +1,50 @@
+package Test::WWW::Selenium::Manual;
+
+=head1 NAME
+
+Test::WWW::Selenium::Manual - Testing with Selenium
+
+
+=head1 INTRODUCTION
+
+Test-WWW-Selenium is test library that enables you to write user interface
+tests for your web application.  You can fill out forms, click buttons and
+links, and generally control any supported browser from your Perl tests.  
+
+It works by sending commands to a Selenium server via HTTP GET/POST
+requests.  The Selenium server can start, stop, and control most mainstream
+browsers using JavaScript.
+
+
+=head1 TABLE OF CONTENTS
+
+=head2 Selenium testing for the impatient
+
+A quick example of how to write web application tests using Selenium.
+
+=head2 How to install the Selenium server
+
+Walk through several different ways to install a Selenium server.
+
+=head2 How to write Selenium tests
+
+Examples and details. 
+
+=head2 How to run Selenium tests
+
+Walk through several common scenarios.
+
+=head2 Best Practices
+
+Avoid the most common mistakes.
+
+=head2 Appendix A: A complete list of methods
+
+TODO!
+
+Test::WWW::Selenium inherits from WWW::Selenium which sends commands to the
+Selenium server.  Each layer builds on the last and each layer introduces new
+commands.  This document provides a complete list of all the methods available
+to Test::WWW::Selenium users.
+
+=cut
