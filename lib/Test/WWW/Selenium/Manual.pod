@@ -7,44 +7,74 @@ Test::WWW::Selenium::Manual - Testing with Selenium
 
 =head1 INTRODUCTION
 
-Test-WWW-Selenium is test library that enables you to write user interface
+Test-WWW-Selenium is a test library that enables you to write user interface
 tests for your web application.  You can fill out forms, click buttons and
 links, and generally control any supported browser from your Perl tests.  
 
-It works by sending commands to a Selenium server via HTTP GET/POST
-requests.  The Selenium server can start, stop, and control most mainstream
-browsers using JavaScript.
+It works by sending commands to a Selenium server via HTTP GET/POST requests.
+The Selenium server will spawn a browser and control it using using JavaScript.
+You can watch your tests interacting with your web application in the browser.
+You can also setup things so that the tests run headless without opening a
+browser.
 
 
 =head1 TABLE OF CONTENTS
 
-=head2 Selenium testing for the impatient
+=over 4
 
-A quick example of how to write web application tests using Selenium.
+=item L<Test::WWW::Selenium::Manual::ForTheImpatient>
 
-=head2 How to install the Selenium server
+Selenium testing for the impatient:  A short example demonstrating writing and
+running Selenium tests.
 
-Walk through several different ways to install a Selenium server.
+=item L<Test::WWW::Selenium::Manual::WriteTests>
 
-=head2 How to write Selenium tests
+How to write Selenium tests.  Includes examples.
 
-Examples and details. 
+=item L<Test::WWW::Selenium::Manual::RunTests>
 
-=head2 How to run Selenium tests
+How to run Selenium tests.  Walk through several common scenarios including
+headless tests and slow tests.
 
-Walk through several common scenarios.
+=item L<Test::WWW::Selenium::Manual::BestPractices>
 
-=head2 Best Practices
+Avoid the most common mistakes.  
 
-Avoid the most common mistakes.
+=item L<Test::WWW::Selenium::Manual::AllMethods>
 
-=head2 Appendix A: A complete list of methods
+A complete list of methods available.  Test::WWW::Selenium inherits from
+WWW::Selenium which sends commands to the Selenium server.  Each layer builds
+on the last and each layer introduces new commands.  This document provides a
+complete list of all the methods provided by all 3 layers.
 
-TODO!
+=back
 
-Test::WWW::Selenium inherits from WWW::Selenium which sends commands to the
-Selenium server.  Each layer builds on the last and each layer introduces new
-commands.  This document provides a complete list of all the methods available
-to Test::WWW::Selenium users.
+
+=head1 HOW TO INSTALL THE SELENIUM SERVER
+
+=head2 How to install Selenium
+
+Selenium is written in Java.  So you need Java.  Ubuntu users should already
+have Java installed (C</usr/bin/java>). 
+
+Then download the latest Selenium Server jar file from
+http://seleniumhq.org/download.  Put it anywhere.  You can run the server with
+this command: 
+
+    java -jar selenium-server.jar -h
+
+
+=head2 How to install Xvfb
+
+Xvfb or X virtual frame buffer is an X server that enables you to run X windows
+applications without showing any screen output.  If you run this with a
+Selenium server, you can run your tests on various browsers on a server with no
+monitor and without X windows installed.  See an example of how to do this in
+L<Test::WWW::Selenium::Manual::RunningTests>.
+
+To install Xvfb on Ubuntu:
+
+    sudo apt-get install xvfb
+
 
 =cut

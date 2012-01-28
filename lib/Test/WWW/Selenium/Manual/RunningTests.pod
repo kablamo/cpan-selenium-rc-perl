@@ -1,21 +1,35 @@
-package Test::WWW::Selenium::Manual;
+package Test::WWW::Selenium::Manual::RunningTests;
 
 =head1 NAME
 
-Test::WWW::Selenium::Manual - Testing with Selenium
+Test::WWW::Selenium::Manual::RunningTests
 
 =head1 RUNNING SELENIUM TESTS
 
-This section describes setting up and running Selenium tests on the command
-line.
+This section describes setting up and running Selenium Perl tests on the command
+line.  There are 3 steps to making this work:
+
+=over 4
+
+=item 1. Start your web application
+
+=item 2. Start the Selenium server
+
+=item 3. Run your Perl tests
+
+=back
+
+The only tricky part is configuring the right servers and ports so all 3
+components talk to each other.  This is done either with the options you pass
+to Test::WWW::Selenium->new() (see L<WWW::Selenium>) or with the environment
+variables described in ...?
 
 =head1 EXAMPLES
 
-Basic setup
+These examples assume the web application you want to test is running on
+localhost port 5000.  
 
-    # Start your web server on localhost (port 5000)
-    # This is the web application you are going to test
-    plackup -p 5000 # if you are using plack
+Basic setup
 
     # Start the Selenium server
     java -jar selenium-server.jar -port 4444 -trustAllSSLCertificates -browserSessionReuse
@@ -50,7 +64,7 @@ Run tests against a remote Selenium server
 
 Running tests slowly
 
-    # Test fly by too fast sometimes.  This slows things down.  It basically
+    # Tests fly by too fast sometimes.  This slows things down.  It basically
     # calls sleep after every call to the Selenium server
     SELENIUM_SLEEP=1 prove -lrv t/test.t
 
@@ -60,7 +74,7 @@ Running tests slowly
 
 The ENVIRONMENT VARIABLES section of Test::WWW::Selenium documentation.  
 
-The command line options for the selenium server
+The command line options for the Selenium server
 
     java -jar selenium-server.jar -h
 

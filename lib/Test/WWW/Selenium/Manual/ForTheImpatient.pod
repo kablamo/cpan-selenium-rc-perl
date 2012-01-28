@@ -13,7 +13,7 @@ selenium server jar file from http://seleniumhq.org/download.  Put it anywhere.
 
 =head1 WRITE A BASIC SELENIUM TEST
 
-    # in the file t/test.t write the following code:
+    # put the following code into t/test.t
     use Test::More tests => 5;
     use Test::WWW::Selenium;
 
@@ -25,7 +25,7 @@ selenium server jar file from http://seleniumhq.org/download.  Put it anywhere.
     $sel->title_like(qr/Google Search/);
 
 
-=head1 RUNNING SELENIUM TESTS
+=head1 RUN YOUR SELENIUM TEST
 
 Basic setup
 
@@ -41,12 +41,12 @@ Basic setup
 
 =head1 SEE ALSO
 
-See HOW TO INSTALL SELENIUM for more details and options.
+See L<Test::WWW::Selenium::Manual::InstallSelenium> for more details and options.
 
-See HOW TO WRITE SELENIUM TESTS for more details and options.
+See L<Test::WWW::Selenium::Manual::WriteTests> for more details and options.
 
-See HOW TO WRITE RUN SELENIUM TESTS for more examples and details such as how
-to run a headless selenium server (eg without opening a browser window).
+See L<Test::WWW::Selenium::Manual::RunTests> for more examples and details such
+as how to run a headless Selenium server.
 
 
 =cut
